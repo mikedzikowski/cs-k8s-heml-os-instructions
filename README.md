@@ -57,7 +57,7 @@ This guide provides instructions for deploying CrowdStrike IAR on both OpenShift
    - **Namespace**: `falcon-image-analyzer`
    - **CID**: Your CrowdStrike Customer ID
    - **Cloud Region**: `autodiscover`
-   - Under **API Credentials**:
+   - Under **Falcon Platform API Configuration**:
      - For **Client ID**, enter your Falcon OAuth2 API Client ID that you created earlier
      - For **Client Secret**, enter your Falcon OAuth2 API Client Secret that you created earlier
 
