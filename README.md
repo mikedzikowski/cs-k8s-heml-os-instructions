@@ -248,8 +248,7 @@ CrowdStrike offers several Helm charts for different components of the Falcon pl
 - **Purpose**: Deploys the Image Assessment Runtime (IAR) for container image scanning
 - **Key Features**: 
   - Scans container images for vulnerabilities and malware
-  - Supports scanning on push, pull, or periodic schedules
-  - Integrates with container registries
+  - Integrates with KAC
 
 ### 2. [falcon-sensor](https://github.com/CrowdStrike/falcon-helm/tree/main/helm-charts/falcon-sensor)
 - **Purpose**: Deploys the CrowdStrike Falcon sensor for Kubernetes node protection
@@ -272,13 +271,6 @@ CrowdStrike offers several Helm charts for different components of the Falcon pl
   - Enforces security policies before containers are deployed
   - Blocks deployment of vulnerable or non-compliant images
   - Integrates with Image Assessment Runtime for scanning results
-
-### 5. [falcon-kac](https://github.com/CrowdStrike/falcon-helm/tree/main/helm-charts/falcon-kac)
-- **Purpose**: Deploys the Kubernetes Admission Controller (KAC)
-- **Key Features**:
-  - Newer version of the admission controller with enhanced features
-  - Supports more granular policy enforcement
-  - Improved integration with CrowdStrike cloud
 
 ---
 
