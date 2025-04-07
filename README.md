@@ -319,4 +319,3 @@ helm uninstall -n falcon-image-analyzer imageanalyzer
 ## Additional Resources
 - [Falcon Operator Guide for Image Analyzer](https://github.com/CrowdStrike/falcon-operator/tree/main/docs/resources/imageanalyzer) - Detailed documentation for OpenShift deployments
 - [Falcon Helm Chart Documentation](https://github.com/CrowdStrike/falcon-helm/tree/main/helm-charts/falcon-image-analyzer) - Complete reference for Kubernetes Helm deployments
-- [CrowdStrike Falcon Helm Repository](https://github.com/CrowdStrike/falcon-helm) - Source for all CrowdStrike Helm charts
