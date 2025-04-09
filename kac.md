@@ -1,5 +1,5 @@
 
-# Sensor Example
+# KAC Example
 
 ```bash
 # pull script
