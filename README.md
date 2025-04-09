@@ -242,6 +242,12 @@ You should see pods with names starting with `imageanalyzer-falcon-image-analyze
 
 #### 7. Example
 ```bash
+# pull script 
+curl -sSL -o falcon-container-sensor-pull.sh https://github.com/CrowdStrike/falcon-scripts/releases/latest/download/falcon-container-sensor-pull.sh
+
+# Update permissions 
+chmod 777 ./falcon-container-sensor-pull.sh
+
 export FCSCLIENTID=abcdef1234567890abcdef1234567890
 export FSCSECRET=abcdef1234567890abcdef1234567890abcdef12
 export CLUSTERRESOURCEGROUP=my-resource-group
