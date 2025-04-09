@@ -295,7 +295,24 @@ michael [ ~ ]$ kubectl -n falcon-image-analyzer get pods
 NAME                                        READY   STATUS    RESTARTS   AGE
 iar-falcon-image-analyzer-d8b8596f8-hr99c   1/1     Running   0          9s
 ```
+## View Logs 
 
+
+```bash
+kubectl logs IAR-POD-NAME -n falcon-image-analyzer
+
+Example:
+time="2025-04-09T18:17:46Z" level=info msg="received scan request event" image_name="docker.io/devopsfaith/krakend:latest" mode=watcher pod_namespace=default pod_name=krakend-66f8f7c6d9-sq5vw image_digest=6ab066d99a8df9991b22f025829a23b69d41b9d012103235a3491a45b223f68c
+time="2025-04-09T18:17:46Z" level=info msg="image not found in cloud. scan needed" image_digest=6ab066d99a8df9991b22f025829a23b69d41b9d012103235a3491a45b223f68c mode=watcher pod_namespace=default pod_name=krakend-66f8f7c6d9-sq5vw image_name="docker.io/devopsfaith/krakend:latest"
+time="2025-04-09T18:17:46Z" level=info msg="scanning new image" mode=watcher pod_namespace=default pod_name=krakend-66f8f7c6d9-sq5vw image_digest=6ab066d99a8df9991b22f025829a23b69d41b9d012103235a3491a45b223f68c image_name="docker.io/devopsfaith/krakend:latest"
+time="2025-04-09T18:17:46Z" level=info msg="processing image" pod_namespace=default pod_name=krakend-66f8f7c6d9-sq5vw image_name="docker.io/devopsfaith/krakend:latest" image_digest=6ab066d99a8df9991b22f025829a23b69d41b9d012103235a3491a45b223f68c mode=watcher
+time="2025-04-09T18:17:46Z" level=info msg="No registry credentials found from cloud provider" mode=watcher pod_namespace=default pod_name=krakend-66f8f7c6d9-sq5vw image_name="docker.io/devopsfaith/krakend:latest" image_digest=6ab066d99a8df9991b22f025829a23b69d41b9d012103235a3491a45b223f68c
+time="2025-04-09T18:17:46Z" level=info msg="extracting image" pod_namespace=default pod_name=krakend-66f8f7c6d9-sq5vw image_name="docker.io/devopsfaith/krakend:latest" image_digest=6ab066d99a8df9991b22f025829a23b69d41b9d012103235a3491a45b223f68c mode=watcher
+time="2025-04-09T18:17:48Z" level=info msg="copied remote image : {\"schemaVersion\":2,\"mediaType\":\"application/vnd.docker.distribution.manifest.v2+json\",\"config\":{\"mediaType\":\"application/vnd.docker.container.image.v1+json\",\"size\":2479,\"digest\":\"sha256:7937b5041df314398f0a6b5904efd0180ffa6feccdefcf97a1933b462301aea5\"},\"layers\":[{\"mediaType\":\"application/vnd.docker.image.rootfs.diff.tar\",\"size\":8120832,\"digest\":\"sha256:08000c18d16dadf9553d747a58cf44023423a9ab010aab96cf263d2216b8b350\"},{\"mediaType\":\"application/vnd.docker.image.rootfs.diff.tar\",\"size\":2048,\"digest\":\"sha256:9c359671bddf1265f09062d49140ead3b97d7a453469fef9c507d11651d7baf6\"},{\"mediaType\":\"application/vnd.docker.image.rootfs.diff.tar\",\"size\":1710080,\"digest\":\"sha256:1a197abc4fd5ae1eec74c29de27c1b2617038e56b29b300a9821e5b01bb7348d\"},{\"mediaType\":\"application/vnd.docker.image.rootfs.diff.tar\",\"size\":116560896,\"digest\":\"sha256:ebddfa17398c8bed6335677496448de19bff6fe73d5c0decc22f3a83b2d792d1\"},{\"mediaType\":\"application/vnd.docker.image.rootfs.diff.tar\",\"size\":3072,\"digest\":\"sha256:2a2bf1923ead609a477a7d7a366f1558cfe5056ef023e5973fa43f1e53050038\"}]}" pod_namespace=default pod_name=krakend-66f8f7c6d9-sq5vw image_name="docker.io/devopsfaith/krakend:latest" image_digest=6ab066d99a8df9991b22f025829a23b69d41b9d012103235a3491a45b223f68c mode=watcher
+
+```
+
+kubectl logs IAR-POD-NAME -n falcon-image-analyzer
 ## Uninstalling
 
 **OpenShift Operator:**
