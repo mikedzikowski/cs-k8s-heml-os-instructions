@@ -240,6 +240,39 @@ You should see pods with names starting with `imageanalyzer-falcon-image-analyze
 
 ---
 
+#### 7. Example
+```bash
+export FCSCLIENTID=abcdef1234567890abcdef1234567890
+export FSCSECRET=abcdef1234567890abcdef1234567890abcdef12
+export CLUSTERRESOURCEGROUP=my-resource-group
+export CLUSTERNAME=my-aks-cluster
+export FCSCID=ABCDEF1234567890ABCDEF1234567890-12
+export IARREGISTRY=registry.crowdstrike.com/falcon-imageanalyzer/us-1/release/falcon-imageanalyzer
+
+# Deploy IAR 
+export IAR=$(bash ./falcon-container-sensor-pull.sh -u $FCSCLIENTID -s $FSCSECRET --type falcon-imageanalyzer --list-tags)
+export LATEST_IAR_TAG=$(echo "$IAR" | jq -r '.tags | sort | last')
+export PULLTOKEN=$(bash ./falcon-container-sensor-pull.sh -u $FCSCLIENTID -s $FSCSECRET --type falcon-imageanalyzer --get-pull-token)
+#az account set --subscription $AZURESUBSCRIPTION
+#az aks get-credentials --resource-group $CLUSTERRESOURCEGROUP --name $CLUSTERNAME --overwrite-existing
+helm repo add crowdstrike https://crowdstrike.github.io/falcon-helm
+helm repo update
+helm upgrade --install iar crowdstrike/falcon-image-analyzer -n falcon-image-analyzer --create-namespace \
+--set deployment.enabled=true \
+--set crowdstrikeConfig.clusterName=$CLUSTERNAME \
+--set crowdstrikeConfig.clientID=$FCSCLIENTID \
+--set crowdstrikeConfig.clientSecret=$FSCSECRET \
+--set crowdstrikeConfig.agentRegion=us-1 \
+--set image.registryConfigJSON=$PULLTOKEN \
+--set image.repository=$IARREGISTRY --set image.tag=$LATEST_IAR_TAG \
+--set crowdstrikeConfig.cid=$FCSCID
+
+"kubectl -n falcon-image-analyzer get pods"
+michael [ ~ ]$ kubectl -n falcon-image-analyzer get pods
+NAME                                        READY   STATUS    RESTARTS   AGE
+iar-falcon-image-analyzer-d8b8596f8-hr99c   1/1     Running   0          9s
+```
+
 ## Uninstalling
 
 **OpenShift Operator:**
